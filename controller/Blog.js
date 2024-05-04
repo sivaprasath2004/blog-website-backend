@@ -7,6 +7,10 @@ mongoose.connect(process.env.DB, {
 });
 const Blog = async (req, res) => {
   await blogs.create(req.body);
-  res.stauts(200).send("ok");
+  res.status(200).send("ok");
 };
-module.exports = { Blog };
+const Blogs = async (req, res) => {
+  let result = await blogs.find({});
+  res.status(200).send(result);
+};
+module.exports = { Blog, Blogs };
